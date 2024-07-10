@@ -43,68 +43,114 @@
       }
       //   CREATE humanScore and computerScore variable to keep track of the scores.
       // Initialize those values with the value 0.
-      let humanScore = 0;
-      let computerScore = 0;
-
       // CREATE a new function named playRound.
       // Define two parameters: humanChoice and computerChoice.
-      function playRound(humanChoice, computerChoice) {
-        //   Make the function's humanChoice parameter case-insensitive so that players can input any variations.
-        humanChoice = humanChoice.toLowerCase();
-        // Write the code for your playRound function to console.log a string value representing the round winner.
+      function playGame() {
+        // SET humanScore
+        // SET computerScore
+        let humanScore = 0;
+        let computerScore = 0;
 
-        // IF both have the same choice THEN
+        function playRound(humanChoice, computerChoice) {
+          //   Make the function's humanChoice parameter case-insensitive so that players can input any variations.
+          humanChoice = humanChoice.toLowerCase();
+          // Write the code for your playRound function to console.log a string value representing the round winner.
+
+          // IF both have the same choice THEN
+          //   CONSOLE draw
+          if (humanChoice === computerChoice) {
+            console.log("draw");
+            return "draw";
+          }
+          // ELSE IF human has "rock" THEN
+          //   IF computer has "paper" THEN
+          //     CONSOLE computer wins
+          //     INCREMENT computerScore
+          //   ELSE
+          //     CONSOLE human wins
+          //     INCREMENT humanScore
+          else if (humanChoice === "rock") {
+            if (computerChoice === "paper") {
+              console.log("computer wins");
+              return "computer";
+            } else {
+              console.log("human wins");
+              return "human";
+            }
+          }
+          // ELSE IF human has "paper" THEN
+          //   IF computer has "scissors" THEN
+          //     CONSOLE computer wins
+          //     INCREMENT computerScore
+          //   ELSE
+          //     CONSOLE human wins
+          //     INCREMENT humanScore
+          else if (humanChoice === "paper") {
+            if (computerChoice === "scissors") {
+              console.log("computer wins");
+              return "computer";
+            } else {
+              console.log("human wins");
+              return "human";
+            }
+          }
+          // ELSE IF human has "scissors" THEN
+          //   IF computer has "rock" THEN
+          //     CONSOLE computer wins
+          //     INCREMENT computerScore
+          //   ELSE
+          //     CONSOLE human wins
+          //     INCREMENT humanScore
+          else if (humanChoice === "scissors") {
+            if (computerChoice === "rock") {
+              console.log("computer wins");
+              return "computer";
+            } else {
+              console.log("human wins");
+              return "human";
+            }
+          }
+        }
+
+        // FOR 5 times
+        //   SET humanChoice using getHumanChoice()
+        // . SET computerChoice using getComputerChoice()
+        //   CALL playRound(humanChoice, computerChoice)
+        // END FOR
+        for (let i = 1; i < 6; i++) {
+          let humanChoice = getHumanChoice();
+          let computerChoice = getComputerChoice();
+          let round = playRound(humanChoice, computerChoice);
+
+          // IF round wins is human THEN
+          //   INCREMENT humanScore
+          // ELSE IF round win is computer THEN
+          //   INCREMENT computerScore
+          // ELSE
+          //   CONTINUE start the loop again.
+          if (round === "human") {
+            humanScore++;
+          } else if (round === "computer") {
+            computerScore++;
+          } else {
+            i = i - 1;
+            continue;
+          }
+        }
+
+        // IF humanScore is greater than computerScore THEN
+        //   CONSOLE human wins the game
+        // ELSE IF computerScore is greater than the humanScore THEN
+        // . CONSOLE computer wins the game
+        // ELSE
         //   CONSOLE draw
-        if (humanChoice === computerChoice) {
-          console.log("It's a draw!");
-        }
-        // ELSE IF human has "rock" THEN
-        //   IF computer has "paper" THEN
-        //     CONSOLE computer wins
-        //     INCREMENT computerScore
-        //   ELSE
-        //     CONSOLE human wins
-        //     INCREMENT humanScore
-        else if (humanChoice === "rock") {
-          if (computerChoice === "paper") {
-            console.log("Computer wins 😱 rock cannot beat paper");
-            computerScore++;
-          } else {
-            console.log("You WIN 🎉 rock beats scissors!");
-            humanScore++;
-          }
-        }
-        // ELSE IF human has "paper" THEN
-        //   IF computer has "scissors" THEN
-        //     CONSOLE computer wins
-        //     INCREMENT computerScore
-        //   ELSE
-        //     CONSOLE human wins
-        //     INCREMENT humanScore
-        else if (humanChoice === "paper") {
-          if (computerChoice === "scissors") {
-            console.log("Computer wins 😱 paper cannot beat scissors");
-            computerScore++;
-          } else {
-            console.log("You WIN 🎉 paper beats rock!");
-            humanScore++;
-          }
-        }
-        // ELSE IF human has "scissors" THEN
-        //   IF computer has "rock" THEN
-        //     CONSOLE computer wins
-        //     INCREMENT computerScore
-        //   ELSE
-        //     CONSOLE human wins
-        //     INCREMENT humanScore
-        else if (humanChoice === "scissors") {
-          if (computerChoice === "rock") {
-            console.log("Computer wins 😱 scissors cannot beat rock");
-            computerScore++;
-          } else {
-            console.log("You WIN 🎉 scissors beats paper!");
-            humanScore++;
-          }
+        // ENDIF
+        if (humanScore > computerScore) {
+          console.log("Human wins the game!");
+        } else if (computerScore > humanScore) {
+          console.log("Computer wins the game!");
+        } else {
+          console.log("It's a draw");
         }
       }
     </script>
