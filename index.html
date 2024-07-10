@@ -7,7 +7,34 @@
   </head>
   <body>
     <script>
-      console.log("Hello World");
+      // getComputerChoice randomly returns one of the
+      // following string values:
+      // "rock", "paper" or "scissors".
+      function getComputerChoice() {
+        // SET choice variable
+        let choice;
+        // SET number variable using random number generator
+        const number = Math.floor(Math.random() * 3);
+        // IF choice equals 0 THEN
+        // 	SET choice to rock
+        if (number === 0) {
+          choice = "rock";
+        }
+        // ELSE IF choice equals 1 THEN
+        // 	SET choice to paper
+        else if (number === 1) {
+          choice = "paper";
+        }
+        // ELSE IF choice equals 2 THEN
+        // 	SET choice to scissors
+        else {
+          choice = "scissors";
+        }
+        // END IF
+        // RETURN choice
+        return choice;
+      }
+      console.log(getComputerChoice());
     </script>
   </body>
 </html>
