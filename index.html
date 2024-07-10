@@ -59,7 +59,7 @@
           // IF both have the same choice THEN
           //   CONSOLE draw
           if (humanChoice === computerChoice) {
-            console.log("draw");
+            alert("draw");
             return "draw";
           }
           // ELSE IF human has "rock" THEN
@@ -71,10 +71,10 @@
           //     INCREMENT humanScore
           else if (humanChoice === "rock") {
             if (computerChoice === "paper") {
-              console.log("computer wins");
+              alert("computer wins");
               return "computer";
             } else {
-              console.log("human wins");
+              alert("human wins");
               return "human";
             }
           }
@@ -87,10 +87,10 @@
           //     INCREMENT humanScore
           else if (humanChoice === "paper") {
             if (computerChoice === "scissors") {
-              console.log("computer wins");
+              alert("computer wins");
               return "computer";
             } else {
-              console.log("human wins");
+              alert("human wins");
               return "human";
             }
           }
@@ -103,10 +103,10 @@
           //     INCREMENT humanScore
           else if (humanChoice === "scissors") {
             if (computerChoice === "rock") {
-              console.log("computer wins");
+              alert("computer wins");
               return "computer";
             } else {
-              console.log("human wins");
+              alert("human wins");
               return "human";
             }
           }
@@ -146,13 +146,14 @@
         //   CONSOLE draw
         // ENDIF
         if (humanScore > computerScore) {
-          console.log("Human wins the game!");
+          alert("Human wins the game!");
         } else if (computerScore > humanScore) {
-          console.log("Computer wins the game!");
+          alert("Computer wins the game!");
         } else {
-          console.log("It's a draw");
+          alert("It's a draw");
         }
       }
+      playGame();
     </script>
   </body>
 </html>
