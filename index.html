@@ -30,14 +30,16 @@
       let humanScoretext = document.querySelector(".humanScore span");
       let computerScoretext = document.querySelector(".computerScore span");
 
-      resetBtn.addEventListener("click", () => {
+      function reset() {
         humanScore = 0;
         computerScore = 0;
         humanScoretext.textContent = humanScore;
         computerScoretext.textContent = computerScore;
-        winRound.textContent = '';
-        announceWinner.textContent = '';
-      })
+        winRound.textContent = "";
+        announceWinner.textContent = "";
+      }
+
+      resetBtn.addEventListener("click", reset());
 
       rockBtn.addEventListener("click", () => {
         let computerChoice = getComputerChoice();
@@ -45,27 +47,29 @@
         humanScoretext.textContent = humanScore;
         computerScoretext.textContent = computerScore;
         checkWinner();
-      })
+      });
       scissorsBtn.addEventListener("click", () => {
         let computerChoice = getComputerChoice();
         playRound("scissors", computerChoice);
         humanScoretext.textContent = humanScore;
         computerScoretext.textContent = computerScore;
         checkWinner();
-      })
+      });
       paperBtn.addEventListener("click", () => {
         let computerChoice = getComputerChoice();
         playRound("paper", computerChoice);
         humanScoretext.textContent = humanScore;
         computerScoretext.textContent = computerScore;
         checkWinner();
-      })
+      });
 
       function checkWinner() {
         if (humanScore === 5) {
-          announceWinner.textContent = "You Win!";
+          alert("You win!");
+          reset();
         } else if (computerScore === 5) {
-          announceWinner.textContent = "Computer Wins...";
+          alert("Computer wins... try again");
+          reset();
         }
       }
 
@@ -74,11 +78,9 @@
         const number = Math.floor(Math.random() * 3);
         if (number === 0) {
           choice = "rock";
-        }
-        else if (number === 1) {
+        } else if (number === 1) {
           choice = "paper";
-        }
-        else {
+        } else {
           choice = "scissors";
         }
         return choice;
@@ -88,9 +90,7 @@
         humanChoice = humanChoice.toLowerCase();
         if (humanChoice === computerChoice) {
           winRound.textContent = "Draw";
-        }
-        else if (humanChoice === "rock") {
-          console.log(computerChoice);
+        } else if (humanChoice === "rock") {
           if (computerChoice === "paper") {
             winRound.textContent = "Computer win the round";
             computerScore++;
@@ -98,8 +98,7 @@
             humanScore++;
             winRound.textContent = "You win the round";
           }
-        }
-        else if (humanChoice === "paper") {
+        } else if (humanChoice === "paper") {
           if (computerChoice === "scissors") {
             winRound.textContent = "Computer win the round";
             computerScore++;
@@ -107,8 +106,7 @@
             winRound.textContent = "You win the round";
             humanScore++;
           }
-        }
-        else if (humanChoice === "scissors") {
+        } else if (humanChoice === "scissors") {
           if (computerChoice === "rock") {
             winRound.textContent = "Computer win the round";
             computerScore++;
@@ -118,8 +116,6 @@
           }
         }
       }
-
-
     </script>
   </body>
 </html>
